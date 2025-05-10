@@ -1,0 +1,393 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #1e1e1e;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #2c2c2c;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    color: #f0f0f0;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #f0f0f0;
+    border-bottom: 1px solid #555;
+    padding-bottom: 10px;
+}
+
+h2 {
+    margin: 10px 0;
+    color: #f0f0f0;
+    font-weight: normal;
+}
+
+.comparison-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.comparison-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+}
+
+.comparison-item {
+    background-color: #333;
+    border-radius: 5px;
+    padding: 10px;
+    position: relative;
+}
+
+.comparison-section h2 {
+    min-width: 80px;
+}
+
+.comparison-selectors {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.selector-group {
+    display: flex;
+    gap: 10px;
+}
+
+.size-dimensions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.add-comparison-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.add-button {
+    background-color: #2a2a2a;
+    border: 1px dashed #4a90e2;
+    color: #4a90e2;
+    padding: 10px 20px;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+.add-button:hover {
+    background-color: #3a3a3a;
+}
+
+.remove-comparison {
+    background-color: transparent;
+    color: #aaa;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    transition: color 0.3s;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    padding: 0;
+}
+
+.remove-comparison:hover {
+    color: #e74c3c;
+}
+
+select, button {
+    padding: 8px 12px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background-color: #3a3a3a;
+    color: #f0f0f0;
+    cursor: pointer;
+}
+
+select:focus, button:focus {
+    outline: none;
+    border-color: #4a90e2;
+}
+
+button {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+.change-unit {
+    background-color: transparent;
+    border: 1px solid #555;
+    padding: 5px 10px;
+    font-size: 0.9em;
+}
+
+.change-unit:hover {
+    background-color: #4a4a4a;
+}
+
+/* 颜色选择器样式 */
+.color-picker, #primary-color-picker {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: 1px solid #555;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.color-picker:hover, #primary-color-picker:hover {
+    border-color: #4a90e2;
+}
+
+.visualization-controls {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 5px;
+}
+
+.zoom-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.zoom-controls input[type="range"] {
+    flex: 1;
+    height: 10px;
+    background-color: #555;
+    border-radius: 5px;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.zoom-controls input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: #4a90e2;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.zoom-controls input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background-color: #4a90e2;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+}
+
+.zoom-controls button {
+    padding: 5px 10px;
+    background-color: #555;
+    font-size: 0.9em;
+}
+
+.visualization-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    background-color: #1a1a1a;
+    border-radius: 5px;
+    border: 1px solid #444;
+    margin-bottom: 20px;
+    cursor: grab;
+}
+
+.visualization-container.dragging {
+    cursor: grabbing;
+}
+
+.visualization {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 500px;
+    position: relative;
+    padding: 20px;
+    transition: transform 0.3s;
+    transform-origin: center;
+    user-select: none;
+}
+
+.visual-item {
+    position: relative;
+}
+
+.visual-rectangle {
+    position: absolute;
+    border: 2px solid #fff;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+}
+
+.primary {
+    z-index: 1;
+}
+
+.secondary {
+    border-style: dashed;
+    z-index: 2;
+}
+
+/* 为不同的对比项设置不同的颜色 */
+.secondary-visual:nth-child(1) .visual-rectangle {
+    border-color: #ffffff;
+}
+
+.secondary-visual:nth-child(2) .visual-rectangle {
+    border-color: #f9ca24;
+}
+
+.secondary-visual:nth-child(3) .visual-rectangle {
+    border-color: #6ab04c;
+}
+
+.secondary-visual:nth-child(4) .visual-rectangle {
+    border-color: #eb4d4b;
+}
+
+.secondary-visual:nth-child(5) .visual-rectangle {
+    border-color: #be2edd;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #333;
+    border-radius: 5px;
+    gap: 15px;
+}
+
+.custom-size {
+    margin: 30px 0;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 8px;
+}
+
+.custom-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.custom-form div {
+    display: flex;
+    align-items: center;
+}
+
+.custom-form label {
+    margin-right: 8px;
+    min-width: 50px;
+}
+
+.custom-form input {
+    padding: 8px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background-color: #3a3a3a;
+    color: #f0f0f0;
+}
+
+.custom-form span {
+    margin-left: 5px;
+    color: #aaa;
+}
+
+/* 真实尺寸模式 */
+.real-size-active .visualization {
+    overflow: auto;
+    min-height: 600px;
+}
+
+.real-size-active .visual-rectangle {
+    transition: none;
+}
+
+/* 响应式布局 */
+@media (max-width: 768px) {
+    .comparison-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .comparison-selectors {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .selector-group, .size-dimensions {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .custom-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .custom-form div {
+        width: 100%;
+    }
+}
+
+.rotate-btn {
+    background-color: #3a3a3a;
+    border: 1px solid #555;
+    border-radius: 4px;
+    color: #f0f0f0;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+    line-height: 1;
+    padding: 0;
+    transition: all 0.2s;
+}
+
+.rotate-btn:hover {
+    background-color: #4a90e2;
+} 
