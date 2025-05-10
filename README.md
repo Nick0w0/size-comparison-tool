@@ -2,8 +2,6 @@
 
 这是一个直观比较不同尺寸的网页工具，用于可视化展示和比较各种标准尺寸，如A系列纸张、屏幕尺寸和设备尺寸。
 
-![尺寸对比展示工具截图](screenshot.png)
-
 ## 主要功能
 
 1. **基础功能**:
@@ -31,12 +29,12 @@
 
 ## 预览
 
-您可以访问以下链接体验在线演示: [在线演示链接](https://Nick0w0.github.io/size-comparison-tool/)
+您可以访问以下链接体验在线演示: [在线演示链接](https://nick0w0.github.io/size-comparison-tool/)
 
 ## 安装与使用
 
 ### 在线使用
-直接访问[在线演示链接](https://Nick0w0.github.io/size-comparison-tool/)即可使用。
+直接访问[在线演示链接](https://nick0w0.github.io/size-comparison-tool/)即可使用。
 
 ### 本地安装
 1. 克隆仓库到本地
